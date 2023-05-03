@@ -9,10 +9,10 @@ export type Request = {
     body: User;
     params: {
         id: string;
-    }; 
+    };
 }
 
-type JSON = {
+type RespJSON = {
     data: User;
     status: string;
     matches?: number;
@@ -23,7 +23,6 @@ type RespErr = {
 }
 
 export type Response = {
-    json: (arg0: JSON) => void;
+    json: (arg0: RespJSON) => void;
     status: (arg0: number) => RespErr;
-    matches: number;
 }
