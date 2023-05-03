@@ -1,4 +1,5 @@
 import type { User } from "../types";
+import { v4 as uuidv4 } from 'uuid';
 
 var mongoose = require("mongoose");
 const Schema = mongoose.Schema;
@@ -6,7 +7,11 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     name: String,
     email: String,
-    id: String,
+    id: {
+        type: String,
+        unique: true,
+        default: uuidv4()
+    },
     date: {
         type: Date,
         default: Date.now,

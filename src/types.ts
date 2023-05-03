@@ -9,7 +9,7 @@ export type Request = {
     body: User;
     params: {
         id: string;
-    }
+    }; 
 }
 
 type JSON = {
