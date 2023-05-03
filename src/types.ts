@@ -12,7 +12,19 @@ export type Request = {
     }
 }
 
+type JSON = {
+    data: User;
+    status: string;
+    matches?: number;
+}
+
+
+type RespErr = {
+    json: (arg0: { error: Error }) => void;
+}
+
 export type Response = {
-    json: (arg0: { data: User; status: string; }) => void;
-    status: any;
+    json: (arg0: JSON) => void;
+    status: (arg0: number) => RespErr;
+    matches: number;
 }

@@ -19,7 +19,7 @@ app.use(express.json());
 app.use('/api/users', userRouter);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`User service listening on port ${port}`)
 })
 
 module.exports = app;

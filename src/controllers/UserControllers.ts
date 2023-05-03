@@ -18,7 +18,7 @@ const createUser = async (req: Request, res: Response): Promise<void> => {
 const queryUsers = async (req: undefined, res: Response): Promise<void> => {
     try {
         const users = await userService.queryUsers();
-        res.json({ data: users, status: "success" });
+        res.json({ data: users, status: "success", matches: users.length });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
