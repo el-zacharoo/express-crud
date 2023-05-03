@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "rootDir": "",
+        "outDir": "dist",
+        "sourceMap": true,
+        "declaration": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "preserveConstEnums": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        },
+        "lib": [
+            "esnext",
+            "dom"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "test/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
