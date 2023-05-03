@@ -16,12 +16,12 @@ const UserSchema = new Schema({
 const userModel = mongoose.model("User", UserSchema);
 const retrieveById = (id: string) => userModel.findOne().where("id").equals(id);
 
-const queryUsers = async (): Promise<void> => {
-    return await userModel.find({})
-};
-
 const createUser = async (user: User): Promise<void> => {
     return await userModel.create(user);
+};
+
+const queryUsers = async (): Promise<void> => {
+    return await userModel.find({})
 };
 
 const getUserById = async (id: string): Promise<void> => {
