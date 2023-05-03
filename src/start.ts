@@ -1,22 +1,24 @@
-var express = require('express');
-var mongoose = require('mongoose');
+import * as express from 'express';
 
-var userRouter = require('./routes');
+import * as bodyParser from 'body-parser';
+import mongoose, { ConnectOptions } from 'mongoose';
 
-const run =() => mongoose.connect(
+import { router } from './routes';
+
+const run = () => mongoose.connect(
     `${process.env.MONGO_URI}/info`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-    }
+    } as ConnectOptions,
 );
-run(); 
+run();
 
-const app = express();
+const app: express.Application = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use('/api/users', userRouter);
+app.use(bodyParser.json());
+app.use('/api/users', router);
 
 app.listen(port, () => {
     console.log(`User service listening on port ${port}`);

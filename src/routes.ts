@@ -1,4 +1,5 @@
-var express = require("express");
+import * as express from "express";
+
 var {
     createUser,
     queryUsers,
@@ -7,9 +8,7 @@ var {
     deleteUser,
 } = require("./controllers/UserControllers");
 
-const router = express.Router();
+export const router = express.Router();
 
 router.route("/").get(queryUsers).post(createUser);
 router.route("/:id").get(getUserById).put(updateUser).delete(deleteUser);
-
-module.exports = router;

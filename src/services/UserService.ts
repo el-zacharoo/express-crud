@@ -1,9 +1,9 @@
 import type { User } from "../types";
 import { v4 as uuidv4 } from 'uuid';
 
-var mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+import * as mongoose from "mongoose";
 
+const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     name: String,
     email: String,
@@ -21,19 +21,19 @@ const UserSchema = new Schema({
 const userModel = mongoose.model("User", UserSchema);
 const retrieveById = (id: string) => userModel.findOne().where("id").equals(id);
 
-const createUser = async (user: User): Promise<void> => {
+const createUser = async (user: User): Promise<mongoose.Document<unknown, object, User>> => {
     return await userModel.create(user);
 };
 
-const queryUsers = async (): Promise<void> => {
-    return await userModel.find({})
+const queryUsers = async (limit: number, offset: number): Promise<(mongoose.Document<unknown, {}, User>)[]> => {
+    return await userModel.find({}).skip(offset).limit(limit).exec();
 };
 
-const getUserById = async (id: string): Promise<void> => {
+const getUserById = async (id: string): Promise<(mongoose.Document<unknown, {}, User> | never | null)> => {
     return await retrieveById(id)
 };
 
-const updateUser = async (id: string, user: User): Promise<void> => {
+const updateUser = async (id: string, user: User): Promise<mongoose.UpdateWriteOpResult> => {
     return await retrieveById(id).updateOne(user);
 };
 

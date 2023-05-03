@@ -10,11 +10,14 @@ export type Request = {
     params: {
         id: string;
     };
+    query: {
+        limit: string;
+        offset: string;
+    };
 }
 
 type RespJSON = {
     data: User;
-    status: string;
     matches?: number;
 }
 
