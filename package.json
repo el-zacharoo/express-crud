@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "tsc && cd dist/src && node start.js",
-    "local": "tsc && node -r dotenv/config dist/src/start.js"
+    "build": "tsc",
+    "start": "cd dist/src && node start.js",
+    "local": "node -r dotenv/config dist/src/start.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

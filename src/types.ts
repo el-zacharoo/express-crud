@@ -18,7 +18,6 @@ type JSON = {
     matches?: number;
 }
 
-
 type RespErr = {
     json: (arg0: { error: Error }) => void;
 }

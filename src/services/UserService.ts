@@ -23,6 +23,7 @@ const queryUsers = async (): Promise<void> => {
 const createUser = async (user: User): Promise<void> => {
     return await userModel.create(user);
 };
+
 const getUserById = async (id: string): Promise<void> => {
     return await retrieveById(id)
 };
