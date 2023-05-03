@@ -47,8 +47,8 @@ const getUserById = async (req: Request, res: Response): Promise<void> => {
 
 const updateUser = async (req: Request, res: Response): Promise<void> => {
     try {
-        const blog = await userService.updateUser(req.params.id, req.body);
-        res.json({ data: blog, status: "success" });
+        const user = await userService.updateUser(req.params.id, req.body);
+        res.json({ data: user, status: "success" });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
