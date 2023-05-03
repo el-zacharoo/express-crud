@@ -1,19 +1,7 @@
-import type { User } from "../types";
+import type { Request, Response } from "../types";
 import { v4 as uuidv4 } from 'uuid';
 
 var userService = require("../services/UserService");
-
-type Request = {
-    body: User;
-    params: {
-        id: string;
-    }
-}
-
-type Response = {
-    json: (arg0: { data: User; status: string; }) => void;
-    status: any;
-}
 
 const createUser = async (req: Request, res: Response): Promise<void> => {
     // uuid is used to generate a random id for the user
