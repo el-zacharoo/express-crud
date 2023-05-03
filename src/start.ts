@@ -3,13 +3,14 @@ var mongoose = require('mongoose');
 
 var userRouter = require('./routes');
 
-() => mongoose.connect(
+const run =() => mongoose.connect(
     `${process.env.MONGO_URI}/info`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     }
 );
+run(); 
 
 const app = express();
 const port = process.env.PORT || 3000;
