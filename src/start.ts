@@ -7,7 +7,7 @@ import * as mongoose from 'mongoose';
 import { router } from './routes';
 
 // await for mongo connection before starting the server
-async (): Promise<void> => {
+const run = async (): Promise<void> => {
     try {
         // connected to mongo
         console.log("Connected to MongoDB");
@@ -29,3 +29,4 @@ async (): Promise<void> => {
         process.exit(1);
     }
 }
+run();
