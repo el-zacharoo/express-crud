@@ -33,8 +33,9 @@ const UserSchema = new Schema({
     },
 });
 
-const userModel = mongoose.model<User & Document>("User", UserSchema);
 const retrieveById = (id: string) => userModel.findOne().where("id").equals(id);
+
+export const userModel = mongoose.model<User & Document>("User", UserSchema);
 
 export const userService = (): Services => {
 
