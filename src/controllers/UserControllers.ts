@@ -1,6 +1,4 @@
-
-
-import type { Request, Response } from "../types";
+import { Request, Response } from "express";
 
 var userService = require("../services/UserService");
 
