@@ -1,12 +1,12 @@
 import * as express from "express";
 
-var {
+import {
     createUser,
     queryUsers,
     getUserById,
     updateUser,
     deleteUser,
-} = require("./controllers/UserControllers");
+} from "./controllers/UserControllers";
 
 export const router = express.Router();
 

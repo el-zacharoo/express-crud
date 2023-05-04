@@ -1,60 +1,61 @@
 import { Request, Response } from "express";
 
-var userService = require("../services/UserService");
+import { userService } from "../services/UserService";
 
+export const createUser = async (req: Request, res: Response): Promise<void> => {
+    const { createUser } = userService();
 
-const createUser = async (req: Request, res: Response): Promise<void> => {
     try {
-        const user = await userService.createUser(req.body);
+        const user = await createUser(req.body);
         res.json({ data: user });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 };
 
-const queryUsers = async (req: Request, res: Response): Promise<void> => {
+export const queryUsers = async (req: Request, res: Response): Promise<void> => {
+    const { queryUsers } = userService();
+
     const limit = parseInt(req.query.limit as string) || 10;
     const offset = parseInt(req.query.offset as string) || 0;
 
     try {
-        const users = await userService.queryUsers(limit, offset);
+        const users = await queryUsers(limit, offset);
         res.json({ data: users, matches: users.length });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 };
 
-const getUserById = async (req: Request, res: Response): Promise<void> => {
+export const getUserById = async (req: Request, res: Response): Promise<void> => {
+    const { getUserById } = userService();
+
     try {
-        const user = await userService.getUserById(req.params.id);
+        const user = await getUserById(req.params.id);
         res.json({ data: user });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 };
 
-const updateUser = async (req: Request, res: Response): Promise<void> => {
+export const updateUser = async (req: Request, res: Response): Promise<void> => {
+    const { updateUser } = userService();
+
     try {
-        const user = await userService.updateUser(req.params.id, req.body);
+        const user = await updateUser(req.params.id, req.body);
         res.json({ data: user });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 };
 
-const deleteUser = async (req: Request, res: Response): Promise<void> => {
+export const deleteUser = async (req: Request, res: Response): Promise<void> => {
+    const { deleteUser } = userService();
+
     try {
-        const user = await userService.deleteUser(req.params.id);
+        const user = await deleteUser(req.params.id);
         res.json({ data: user });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
-};
-
-module.exports = {
-    queryUsers,
-    createUser,
-    getUserById,
-    updateUser,
-    deleteUser,
 };
